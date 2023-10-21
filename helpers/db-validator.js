@@ -19,8 +19,8 @@ const existsMail = async (mail) => {
     }
 }
 
-const existsUser = async (user) => {
-    const findUser = await User.findOne({user})
+const existsUser = async ( usuario ) => {
+    const findUser = await User.findOne({usuario})
     if(findUser){
         throw Error(`Ese nombre de usuario ya existe.`)        
     }
