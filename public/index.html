@@ -7,68 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Google Sing-in</h1>
-    <hr>
-
-    <div id="g_id_onload"
-         data-client_id="46410403966-895fmci2vc1n33rln47jm5s8qf6knagt.apps.googleusercontent.com"
-         data-auto_prompt="false"
-         data-callback="handleCredentialResponse">
-    </div>
-<div class="g_id_signin"
-data-type="standard"
-data-size="large"
-data-theme="outline"
-data-text="sign_in_with"
-data-shape="rectangular"
-data-logo_alignment="left">
-</div>
-
-<button id="google-logout">
-    Singout
-</button>
-
-<script src="https://accounts.google.com/gsi/client" async></script>
-
-<script>
-    function handleCredentialResponse(response) {
-       // decodeJwtResponse() is a custom function defined by you
-       // to decode the credential response.
-
-       // Google Token: ID_TOKEN
-    //    console.log('id_token', response.credential)
-
-    // console.log(response.credential);
-
-    const body = { id_token: response.credential}
-
-    fetch('http://localhost:8080/api/auth/google', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json' 
-        },
-        body: JSON.stringify(body)
-    })
-    .then(resp => resp.json())
-    .then(resp => {
-        console.log(resp);
-        localStorage.setItem('account', resp.user.mail)
-    })
-    .catch(console.warn)
-    }
-
-    const logOutButton = document.getElementById("google-logout");
-
-    logOutButton.onclick = ()=>{
-        google.accounts.id.revoke(localStorage.getItem('account'), done =>{
-            localStorage.clear();
-            location.reload();
-
-        })
-    }
+    <h1>Acceso Denegado</h1>
 
 
-  </script>
+
+
 
 </body>
 </html>
